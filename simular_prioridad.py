@@ -74,4 +74,7 @@ def ensuciar(datos_df):
     #Se ensucia `dias_max_respuesta`: 3% con un valor absurdo (999).
     subconjunto_datos = generar_muestra(datos_df,0.03)
     datos_df.loc[subconjunto_datos,"dias_max_respuesta"] = 999
-# concat (duplicar filas) <- tarea
+
+    #Se ensucia el 8% repitiendo las filas
+    filas_repetidas = datos_df.sample(frac = 0.08)
+    datos_df = pd.concat([datos_df, filas_repetidas])
